@@ -64,6 +64,7 @@ func (m *Machine) Goto(s State, ctx context.Context, args ...interface{}) (err e
 		if err != nil {
 			return
 		} else if m.object.GetIgnore() {
+			fmt.Println("ignored")
 			return
 		}
 
