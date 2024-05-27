@@ -45,6 +45,7 @@ type IMachine interface {
 }
 
 func (m *Machine) Goto(s State, ctx context.Context, args ...interface{}) (err error) {
+	fmt.Println("goto new state")
 	if s == m.state {
 		return nil
 	}
