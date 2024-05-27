@@ -68,7 +68,7 @@ func (m *Machine) Goto(s State, ctx context.Context, args ...interface{}) (err e
 		}
 
 		_s := m.object.GetState()
-		//fmt.Println(m.object.GetIgnore(), m.object.GetSkip(), "中:",_s, "标:", s, "原:", m.state)
+		fmt.Println(m.object.GetIgnore(), m.object.GetSkip(), "中:",_s, "标:", s, "原:", m.state)
 
 		//如果有skip的话，中间状态就是目标状态
 		if m.object.GetSkip() {
@@ -78,6 +78,7 @@ func (m *Machine) Goto(s State, ctx context.Context, args ...interface{}) (err e
 			}
 			m.state = _s
 		}else if _s != s { //如果中间状态和最终状态不一样，就使用最终状态
+			fmt.Println("set state from", _s, "to", s)
 			err = m.object.SetState(ctx, s)
 			if err != nil {
 				return
